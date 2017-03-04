@@ -94,9 +94,16 @@ function isEmail(emailStr) {
   console.log( test.test(emailStr))
    return test.test(emailStr)
 }
-var a =
-isEmail('shiqian@qq.com')
-// 判断是否为手机号
-function isMobilePhone(phone) {
-  // your implement
+isEmail('shiqian@qq.com');
+
+// 为element增加一个样式名为newClassName的新样式
+function addClass(element, newClassName) {
+   if(element.className ==''){
+     document.getElementById(element).setAttribute('class',newClassName)
+   }else{
+     var classArr = document.getElementById(element).className;
+     console.log(classArr)
+   }
+  console.log()
 }
+addClass('addbtn');
