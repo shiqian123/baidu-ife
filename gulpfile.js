@@ -14,12 +14,13 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 });
 gulp.task('js', function () {
-  console.log('js')
+  console.log(111)
   gulp.src('js/*.js')
     .pipe(connect.reload());
 });
 gulp.task('watch', function () {
   gulp.watch(['*.html'], ['html']);
+  console.log(111)
   gulp.watch(['js/*.js'], ['js']);
 });
 gulp.task('default', ['connect', 'watch','js']);
