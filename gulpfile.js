@@ -4,13 +4,12 @@ var gulp = require('gulp'),
 gulp.task('connect', function() {
   console.log(__dirname)
   connect.server({
-    root: __dirname,
-    livereload: true
+    root: [__dirname,],
+    livereload: true,
+    directoryListing: false
   });
 });
-
 gulp.task('html', function () {
-  console.log('js/*.js')
   gulp.src('*.html')
     .pipe(connect.reload());
 });
@@ -20,7 +19,6 @@ gulp.task('js', function () {
     .pipe(connect.reload());
 });
 gulp.task('watch', function () {
-  console.log(2323)
   gulp.watch(['*.html'], ['html']);
   gulp.watch(['js/*.js'], ['js']);
 });

@@ -84,10 +84,17 @@ var obj = {
     c2: 4
   }
 };
-console.log(getObjectLength(obj)); 
-
-
-
+function a() {
+  var b =10;
+  return function bar(x) {
+    if(x>b){
+      console.log(x);
+    }
+  };
+}
+var a = a();
+b = 100;
+a(15)
 // 判断是否为邮箱地址
 function isEmail(emailStr) {
   var test =  /^\w{3,20}@(\w{2,8})(.([a-zA-z]{2,8})){1,4}$/g;
@@ -98,12 +105,47 @@ isEmail('shiqian@qq.com');
 
 // 为element增加一个样式名为newClassName的新样式
 function addClass(element, newClassName) {
+  var _className = document.getElementById(element).className;
    if(element.className ==''){
      document.getElementById(element).setAttribute('class',newClassName)
    }else{
-     var classArr = document.getElementById(element).className;
-     console.log(classArr)
+     var classArr =_className;
+      if(classArr.indexOf(newClassName)>-1){
+        return
+      }else{
+        _className = (_className + ' ' + newClassName)
+        console.log( _className )
+      }
    }
-  console.log()
 }
-addClass('addbtn');
+//封装
+function getId(id){
+  return document.getElementById(id);
+}
+// 判断siblingNode和element是否为同一个父元素下的同一级的元素，返回bool值
+function isSiblingNode(element, siblingNode) {
+  console.log(document.querySelector('#addbtn'));
+  if(getId(element).parentNode == getId(siblingNode).parentNode){
+    console.log(1111)
+  }else{
+    console.log(333)
+  }
+}
+function getPosition(element) {
+  var box = element.getBoundingClientRect();
+  return box;
+}
+// mini selector
+function $(selector) {
+  return document.querySelector(selector);
+}
+// 给一个element绑定一个针对event事件的响应，响应函数为listener
+function addEvent(element, event, listener) {
+
+ listener(1)
+}
+function callBack(a) {
+}
+addEvent('addbtn','click',callBack);
+addClass('addbtn','a');
+isSiblingNode('addbtn','sss')
